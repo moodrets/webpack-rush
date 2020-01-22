@@ -1,0 +1,18 @@
+@import "../blocks/header/header.scss";
+
+body {
+    background: #fff;
+}
+
+.svg-icon {
+    
+    width: 30px;
+    height: 30px;
+    fill : #fff;
+
+    svg {
+        fill: inherit;
+        width: inherit;
+        height: inherit;
+    }
+}
