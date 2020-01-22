@@ -1,14 +1,14 @@
 @import "../blocks/header/header.scss";
 
 body {
-    background: #fff;
+    background: #ccc;
 }
 
 .svg-icon {
     
     width: 30px;
     height: 30px;
-    fill : #fff;
+    fill : #000;
 
     svg {
         fill: inherit;

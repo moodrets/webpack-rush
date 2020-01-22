@@ -1,6 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-const util = require("util");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -8,8 +7,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const PAGES_DIR = `./src/pug/`
-const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'))
-
+const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'));
 
 const svgSpritePath = './dist/svg/sprite.svg';
 let svgSprite = false;
@@ -105,7 +103,7 @@ module.exports = {
       },
       // svg sprite
       {
-        test: /\.svg$/,
+        test: /(icons).*\.svg$/,
         use: [
           {
             loader: "svg-sprite-loader",
@@ -113,6 +111,20 @@ module.exports = {
                 esModule: false,
                 extract: true,
                 spriteFilename: "svg/sprite.svg"
+            }
+          },
+          {
+            loader: 'svgo-loader',
+            options: {
+              plugins: [
+                {removeAttrs: { attrs: '(fill|fill-rule|stroke|clip-rule)'}},
+                {removeTitle: true},
+                {removeUselessDefs: true},
+                {removeDesc: true},
+                {convertPathData: false},
+                {convertColors: {shorthex: false}},
+                {convertPathData: false}
+              ]
             }
           }
         ],
