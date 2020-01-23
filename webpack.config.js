@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const PAGES_DIR = `./src/pug/`
+const PAGES_DIR = `./src/pug/`;
 const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'));
 
 const svgSpritePath = './dist/svg/sprite.svg';
@@ -18,10 +18,14 @@ try {
   console.log('\x1b[33m%s\x1b[0m', 'Придется перезапустить webpack - для сборки спрайта');
 }
 
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = process.env.NODE_ENV === 'production';
+
 module.exports = {
   entry: `./src/js/app.js`,
+  devtool: 'source-map',
   output: {
-    filename: 'js/[name].js',
+    filename: isDev ? 'js/[name].[hash].js' : 'js/[name].js',
     path : path.resolve(__dirname, 'dist'),
   },
   resolve: {
@@ -38,8 +42,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-      chunkFilename: 'css/[id].css',
+      filename: isDev ? 'css/[name].[hash].css' : 'css/[name].css',
+      chunkFilename: isDev ? 'css/[id].[hash].css' : 'css/[id].css',
     }),
     new SpriteLoaderPlugin({
       spriteAttrs: {
@@ -70,28 +74,41 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: /(node_modules|bower_components)/,
         use: [
           'vue-style-loader',
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
         ]
       },
       // vue components
       {
         test: /\.vue$/,
+        exclude: /(node_modules|bower_components)/,
         loader: 'vue-loader'
       },
       // sass-scss
       {
         test: /\.(sass|scss)$/,
+        exclude: /(node_modules|bower_components)/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
           },
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
           {
             loader: 'sass-loader',
             options: {
-                sourceMap: true
+              sourceMap: true,
             }
           }
         ]
@@ -99,7 +116,11 @@ module.exports = {
       // pug pages
       {
         test: /\.pug$/,
-        loader: 'pug-loader'
+        exclude: /(node_modules|bower_components)/,
+        loader: 'pug-loader',
+        query: {
+          pretty: isDev ? false : true,
+        }
       },
       // svg sprite
       {

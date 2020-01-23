@@ -1,15 +1,15 @@
 {
   "name": "webpack-rush",
   "version": "1.0.0",
-  "description": "",
+  "description": "Сборщик для верстки с помощью webpack. Умеет обрабатывать: SCSS, PUG, ES6, SVG-sprites, Vue-components (*.vue), изображения (оптимизация)",
   "main": "webpack.config.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development --open",
-    "start": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
+    "start": "cross-env NODE_ENV=development webpack --mode development --watch",
+    "build": "cross-env NODE_ENV=production webpack --mode production"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "retsdmitriy@gmail.com",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
@@ -26,13 +26,13 @@
     "svgo": "^1.3.2",
     "svgo-loader": "^2.2.1",
     "vue-loader": "^15.8.3",
-    "vue-loader-plugin": "^1.3.0",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
+    "cross-env": "^6.0.3",
     "vue": "^2.6.11"
   }
 }

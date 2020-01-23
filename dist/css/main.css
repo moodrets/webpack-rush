@@ -1,25 +1,6 @@
-.site-header {
-  padding: 40px;
-  background: crimson;
-  color: #fff; }
+body{background:#ccc}.svg-icon{width:30px;height:30px;fill:#000}.svg-icon svg{fill:inherit;width:inherit;height:inherit}.svg-icon--red{fill:red}.site-header{padding:40px;background:crimson;color:#fff}
 
-body {
-  background: #ccc; }
+.vue-app[data-v-072bacc1]{border:1px solid #000;padding:20px}h1[data-v-072bacc1]{color:blue}
 
-.svg-icon {
-  width: 30px;
-  height: 30px;
-  fill: #000; }
-  .svg-icon svg {
-    fill: inherit;
-    width: inherit;
-    height: inherit; }
 
-.vue-app[data-v-15cc17a4] {
-  border: 1px solid #000;
-  padding: 20px;
-}
-h1[data-v-15cc17a4] {
-  color: blue;
-}
-
+/*# sourceMappingURL=main.css.map*/
