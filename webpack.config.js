@@ -22,6 +22,7 @@ const isDev = process.env.NODE_ENV === 'development';
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
+  mode: isDev ? 'development' : 'production',
   entry: `./src/js/app.js`,
   devtool: 'source-map',
   output: {
@@ -62,6 +63,7 @@ module.exports = {
   ],
   module: {
     rules: [
+      // js
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
@@ -72,6 +74,7 @@ module.exports = {
           }
         }
       },
+      // css
       {
         test: /\.css$/,
         exclude: /(node_modules|bower_components)/,
@@ -121,6 +124,44 @@ module.exports = {
         query: {
           pretty: isDev ? false : true,
         }
+      },
+      // image optimization
+      {
+        test: /\.(gif|png|jpe?g)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[folder]/[name].[ext]',
+              publicPath: '../',
+              outputPath: '/',
+              emitFile: true,
+              // useRelativePaths: true
+            },
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: [0.65, 0.90],
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              webp: {
+                quality: 75
+              }
+            }
+          },
+        ],
       },
       // svg sprite
       {
