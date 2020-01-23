@@ -4,7 +4,7 @@ import "@/scss/app.scss"
 import Vue from 'vue'
 import App from '@/js/vue/components/App.vue'
 
-import '../blocks/header/header'
+import '../components/header/header'
 
 new Vue({
     render: h => h(App)
