@@ -130,7 +130,7 @@ module.exports = {
         test: /\.(gif|png|jpe?g)$/i,
         use: [
           {
-            loader: 'file-loader',
+            loader: isDev ? 'url-loader' : 'file-loader',
             options: {
               name: '[folder]/[name].[ext]',
               publicPath: '../',
@@ -172,6 +172,7 @@ module.exports = {
             options: {
                 esModule: false,
                 extract: true,
+                runtimeCompat: true,
                 spriteFilename: "svg/sprite.svg"
             }
           },

@@ -1,20 +1,3 @@
 body {
     background: #ccc;
 }
-
-.svg-icon {
-    
-    width: 30px;
-    height: 30px;
-    fill : #000;
-
-    svg {
-        fill: inherit;
-        width: inherit;
-        height: inherit;
-    }
-
-    &--red {
-        fill : red;
-    }
-}
