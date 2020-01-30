@@ -9,15 +9,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const PAGES_DIR = `./src/pug/`;
 const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'));
 
-const svgSpritePath = './dist/svg/sprite.svg';
-let svgSprite = false;
-
-try {
-  svgSprite = fs.readFileSync(svgSpritePath);
-} catch (err) {
-  console.log('\x1b[33m%s\x1b[0m', 'Придется перезапустить webpack - для сборки спрайта');
-}
-
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -56,9 +47,6 @@ module.exports = {
     ...PAGES.map(page => new HtmlWebpackPlugin({
       template: `${PAGES_DIR}/${page}`,
       filename: `./${page.replace(/\.pug/,'.html')}`,
-      templateParameters: {
-        svg_sprite: svgSprite ? svgSprite : ''
-      }
     })),
   ],
   module: {
