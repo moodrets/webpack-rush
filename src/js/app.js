@@ -9,3 +9,7 @@ import '../components/header/header'
 new Vue({
     render: h => h(App)
 }).$mount('#app')
+
+document.querySelector('#button').addEventListener('click', ()=>{
+    import(/*webpackChunkName: "dynamic/dynamic"*/ '@/js/dynamic/dynamic')
+})

@@ -16,6 +16,10 @@ body {
     height: inherit; }
   .svg-icon--red {
     fill: red; }
+  .svg-icon--stroke {
+    fill: none;
+    stroke: #000;
+    stroke-width: 1px; }
 
 .box {
   width: 300px;
@@ -38,4 +42,4 @@ h1[data-v-15cc17a4] {
 }
 
 
-/*# sourceMappingURL=main.78d35706c26aca0a24e3.css.map*/
+/*# sourceMappingURL=main.css.map*/
