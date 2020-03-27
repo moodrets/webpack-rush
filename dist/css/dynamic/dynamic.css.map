@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://////./src/js/dynamic/dynamic.scss"],"names":[],"mappings":"AAAA;EACI,gBAAgB","file":"css/dynamic/dynamic.css","sourcesContent":["body {\r\n    background: teal;\r\n}"],"sourceRoot":""}

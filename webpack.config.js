@@ -15,7 +15,7 @@ const isProd = process.env.NODE_ENV === 'production';
 module.exports = {
     mode: isDev ? 'development' : 'production',
     entry: `./src/js/app.js`,
-    devtool: 'source-map',
+    devtool: isDev ? 'source-map' : 'none',
     output: {
         filename: 'js/[name].js',
         path: path.resolve(__dirname, 'dist'),
@@ -109,7 +109,7 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/,
                 loader: 'pug-loader',
                 query: {
-                    pretty: isDev ? false : true,
+                    pretty: isDev ? true : false,
                 }
             },
             // image optimization
@@ -179,4 +179,7 @@ module.exports = {
             }
         ]
     },
+    devServer: {
+        port: 7777
+    }
 };

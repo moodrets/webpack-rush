@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/js/dynamic/dynamic.js","webpack:///./src/js/dynamic/dynamic.scss"],"names":[],"mappings":";;;;;;;;;;AAAA;AAAA;AAAA;;;;;;;;;;;;ACAA,uC","file":"js/dynamic/dynamic.js","sourcesContent":["import './dynamic.scss'","// extracted by mini-css-extract-plugin"],"sourceRoot":""}

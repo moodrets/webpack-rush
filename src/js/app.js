@@ -11,5 +11,5 @@ new Vue({
 }).$mount('#app')
 
 document.querySelector('#button').addEventListener('click', ()=>{
-    import(/*webpackChunkName: "dynamic/dynamic"*/ '@/js/dynamic/dynamic')
+    import(/* webpackChunkName: "dynamic/dynamic" */ '@/js/dynamic/dynamic')
 })
