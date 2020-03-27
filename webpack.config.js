@@ -71,7 +71,7 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap: true,
+                            sourceMap: isDev,
                         },
                     },
                 ]
@@ -92,13 +92,13 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap: true,
+                            sourceMap: isDev,
                         },
                     },
                     {
                         loader: 'sass-loader',
                         options: {
-                            sourceMap: true,
+                            sourceMap: isDev,
                         }
                     }
                 ]
@@ -109,7 +109,7 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/,
                 loader: 'pug-loader',
                 query: {
-                    pretty: isDev ? true : false,
+                    pretty: isProd,
                 }
             },
             // image optimization
